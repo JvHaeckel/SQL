@@ -9,5 +9,4 @@ WHERE  DATA >= '2025-01-01 00:00:00'  -- Considera apenas registros a partir de 
 AND (HODFINALVELOC - HODINICIALVELOC) < 0  -- Filtra apenas as linhas em que o hodômetro final é menor que o inicial (diferença negativa)
 
 GROUP BY  MONTH(DATA)  -- Agrupa os dados pelo número do mês
-
 ORDER BY  Mês;  -- Ordena os resultados de janeiro (1) a dezembro (12)
