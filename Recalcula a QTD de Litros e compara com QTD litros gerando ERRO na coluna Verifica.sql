@@ -1,0 +1,14 @@
+/* Consulta realizada para apontar as divergências de conta entre o que já estava calculado no Banco 
+e o que foi calculado por mim. 
+ Recalcula a QTD de Litros e compara com QTD litros gerando ERRO na coluna Verifica*/
+
+SELECT VEI_IDENTIFICACAO_EMPRESA AS PREFIXO,
+HAS_DATA AS DATA, EMPRESA, HAS_QTD_LITROS, ABS(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) AS Recalcula_QTD_LITROS ,
+ 
+ CASE 
+ WHEN HAS_QTD_LITROS <> ABS(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) THEN 'ERRO' ELSE ''
+ END AS Verifica ,
+ 
+ HAS_ENCERRANTE_DEPOIS, HAS_ENCERRANTE_ANTES, BOM_CODIGO, CAR_CODIGO_ABASTECEDOR, VEI_CODIGO, USU_CODIGO
+ 
+ FROM fact_vwpbi_abast_gtfrota WHERE HAS_DATA >= '2025-01-01 00:00:00' 
