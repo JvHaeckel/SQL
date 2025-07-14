@@ -1,15 +1,12 @@
--- Globus tabela com Km Negativos e dados Importantes
+-- Dados Importantes Globus com coluna de KmPercorrido e Status
 
 SELECT EMPRESA, DATA,PREFIXO, (HODFINALVELOC - HODINICIALVELOC )AS Percorrido, 
 KMPERCORRIDO, 
 CASE 
 WHEN ROUND( HODFINALVELOC - HODINICIALVELOC, 0) = ROUND (KMPERCORRIDO, 0) THEN ' ' ELSE 'ERRO'
 END AS Status ,
-
 LITROS, CONSUMO, VALOR, TIPO_FROTA, LINHA
-
 from fact_vwpbi_abastecimento_detalhado
  
  WHERE DATA >= '2025-01-01 00:00:00' 
- 
  ORDER BY DATA ASC
