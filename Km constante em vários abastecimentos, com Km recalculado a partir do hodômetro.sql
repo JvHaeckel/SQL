@@ -1,24 +1,26 @@
--- Km constante em vários abastecimentos, com Km recalculado a partir do hodômetro
+-- Prefixos que abasteceram várias vezes, sem aumento significativo no km percorrido recalculado
 SELECT
-    EMPRESA, PREFIXO, 
-    COUNT(*) AS Qtd_Abastecimentos, -- Conta o número total de abastecimentos feitos por cada veículo (com base em EMPRESA + PREFIXO).
-    MIN(DATA) AS Data_Inicial, /* Pega a primeira e a última data de abastecimento no período analisado, por veículo.
-                                Isso ajuda a entender por quanto tempo o KM ficou inalterado. */
+    EMPRESA,
+    PREFIXO,
+    COUNT(*) AS Qtd_Abastecimentos, -- Quantidade de abastecimentos para o veículo
+    MIN(DATA) AS Data_Inicial,
     MAX(DATA) AS Data_Final,
-    MIN(HODFINALVELOC - HODINICIALVELOC) AS KM_Percorrido_Recalculado_Min,
-    MAX(HODFINALVELOC - HODINICIALVELOC) AS KM_Percorrido_Recalculado_Max,
-    MIN(HODINICIALVELOC) AS HodometroInicial_Min,
-    MAX(HODFINALVELOC) AS HodometroFinal_Max
-    
-FROM fact_vwpbi_abastecimento_detalhado  
-WHERE DATA >= '2025-01-01 00:00:00' 
+    MIN(HODFINALVELOC - HODINICIALVELOC) AS Km_Percorrido_Min, -- menor deslocamento calculado
+    MAX(HODFINALVELOC - HODINICIALVELOC) AS Km_Percorrido_Max, -- maior deslocamento calculado
+    MAX(HODFINALVELOC) - MIN(HODINICIALVELOC) AS Km_Total_Recalculado -- km total acumulado entre primeiros e últimos hodômetros
+
+FROM fact_vwpbi_abastecimento_detalhado
+WHERE DATA >= '2025-01-01 00:00:00'
+
 GROUP BY EMPRESA, PREFIXO
 HAVING 
-    COUNT(DISTINCT (HODFINALVELOC - HODINICIALVELOC)) = 1 -- o Km recalculado foi sempre o mesmo (suspeito).
-    AND COUNT(*) > 1                 -- mais de um abastecimento
-    
-    /* Essa consulta serve para identificar veículos que abasteceram várias vezes, mas o Km recalculado
-    a partir do hodômetro nunca mudou, o que é um comportamento atípico e pode indicar:
-            Falha na captura automática do KM;
-            KM não atualizado corretamente;
-            Problema na integração entre sistemas. */
+    COUNT(*) > 1 -- mais de um abastecimento
+    AND (MAX(HODFINALVELOC) - MIN(HODINICIALVELOC)) < 0.01 -- km total percorrido quase zero
+
+/* 
+Essa consulta identifica veículos que abasteceram mais de uma vez mas não rodaram (km recalculado entre
+o menor hodômetro inicial e maior hodômetro final é menor que 0,01 km), indicando:
+- Veículos abastecidos sem rodar;
+- Possíveis falhas na captura do hodômetro;
+- Ou dados incorretos/inconsistentes.
+*/
