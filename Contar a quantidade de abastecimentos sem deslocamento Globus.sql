@@ -1,7 +1,7 @@
 -- Contar a quantidade de abasteciemtos sem deslocamento Globus
 SELECT 
     EMPRESA, PREFIXO,
-    COUNT(*) AS Qtd_Abastecimentos_Sem_Deslocamento
+    COUNT(*) AS Qtd_Abas_Sem_Deslocamento
 
 FROM  fact_vwpbi_abastecimento_detalhado
 
