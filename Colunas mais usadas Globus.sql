@@ -1,7 +1,8 @@
--- Colunas importantes da tabela Abastecimento Detalhado
+-- Colunas mais usadas Globus
 
-SELECT EMPRESA, DATA,PREFIXO, HODINICIALVELOC, HODFINALVELOC, KMPERCORRIDO, 
+SELECT EMPRESA, DATA,PREFIXO, KMPERCORRIDO, (HODFINALVELOC - HODINICIALVELOC) AS RecalKmPercorrido,  
 LITROS, CONSUMO, TIPO_FROTA, VALOR, LINHA
 FROM fact_vwpbi_abastecimento_detalhado WHERE DATA >= '2025-01-01 00:00:00' 
+order by DATA ASC
 
  
