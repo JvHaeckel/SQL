@@ -15,7 +15,7 @@ WHERE DATA >= '2025-01-01 00:00:00'
 GROUP BY EMPRESA, PREFIXO
 HAVING 
     COUNT(*) > 1 -- mais de um abastecimento
-    AND (MAX(HODFINALVELOC) - MIN(HODINICIALVELOC)) < 0.01 -- km total percorrido quase zero
+    AND (MAX(HODFINALVELOC) - MIN(HODINICIALVELOC)) < 0.1 -- km total percorrido quase zero
 
 /* 
 Essa consulta identifica veículos que abasteceram mais de uma vez mas não rodaram (km recalculado entre
