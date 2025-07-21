@@ -1,4 +1,4 @@
--- Contar a quantidade de abastecimentos sem deslocamento Globus
+-- Contar a quantidade de abasteciemtos sem deslocamento Globus
 SELECT 
     EMPRESA, PREFIXO,
     COUNT(*) AS Qtd_Abas_Sem_Deslocamento
@@ -9,4 +9,4 @@ WHERE  DATA >= '2025-01-01 00:00:00'
     AND KMPERCORRIDO = 0
     AND LITROS > 0
 GROUP BY EMPRESA, PREFIXO
-ORDER BY EMPRESA, Qtd_Abas_Sem_Deslocamento DESC;
+ORDER BY EMPRESA, Qtd_Abastecimentos_Sem_Deslocamento DESC;
