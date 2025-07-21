@@ -1,4 +1,4 @@
--- Contar a quantidade de abastecimentos sem deslocamento Globus por prefixo em cada empresa
+-- Contar a quantidade de abasteciemtos sem deslocamento Globus
 SELECT 
     EMPRESA, PREFIXO,
     COUNT(*) AS Qtd_Abas_Sem_Deslocamento
