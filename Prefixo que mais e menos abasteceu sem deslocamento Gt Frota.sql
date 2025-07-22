@@ -1,4 +1,4 @@
--- Consumo total por prefixo em abastecimentos sem deslocamento
+-- Prefixo que mais e menos abasteceu sem deslocamento Gt Frota
 SELECT 
     VEI_IDENTIFICACAO_EMPRESA AS PREFIXO,  
     ROUND(SUM(HAS_QTD_LITROS), 2) AS Litros
