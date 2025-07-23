@@ -1,4 +1,4 @@
--- Colunas mais usadas Globus
+-- Colunas mais usadas Globus com KmPercorrido recalculado
 
 SELECT EMPRESA, DATA,PREFIXO, KMPERCORRIDO, (HODFINALVELOC - HODINICIALVELOC) AS RecalKmPercorrido,  
 LITROS, CONSUMO, TIPO_FROTA, VALOR, LINHA
