@@ -22,7 +22,7 @@ LEFT JOIN    -- LEFT JOIN: junta a subquery T com os dados de abastecimentos SEM
         FROM fact_vwpbi_abastecimento_detalhado
         WHERE 
 	        DATA >= '2025-01-01 00:00:00'  
-            AND KMPERCORRIDO = 0           -- Veículo não percorreu distância
+            AND KMPERCORRIDO <= 0.002          -- Veículo não percorreu distância
             AND LITROS > 0                 -- Considera apenas abastecimentos com volume real
         GROUP BY 
             EMPRESA, PREFIXO  -- Agrupa por empresa e veículo
