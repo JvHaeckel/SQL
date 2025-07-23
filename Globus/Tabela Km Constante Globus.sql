@@ -2,7 +2,7 @@
 SELECT  EMPRESA,PREFIXO,
     COUNT(*) AS Qtd_Abastecimentos,
     ROUND (SUM(LITROS),2) AS Total_Litros_Abastecidos,
-	MAX(HODFINALVELOC) - MIN(HODINICIALVELOC) AS Km_Total_Recalculado
+	ROUND(MAX(HODFINALVELOC) - MIN(HODINICIALVELOC), 3)AS Km_Total_Recalculado
     
 FROM fact_vwpbi_abastecimento_detalhado  WHERE DATA >= '2025-01-01 00:00:00'
 GROUP BY EMPRESA, PREFIXO
