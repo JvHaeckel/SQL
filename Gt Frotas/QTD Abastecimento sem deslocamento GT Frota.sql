@@ -1,4 +1,4 @@
--- QTD Abastecimento sem deslocamento
+-- QTD Abastecimento sem deslocamento GT Frota
 SELECT 
     COUNT(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) AS QTD_Abas_SemDeslocamento
 FROM fact_vwpbi_abast_gtfrota

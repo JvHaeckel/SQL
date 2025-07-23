@@ -1,4 +1,4 @@
-/* Inconsistência na quantidade de Litros GT Frota*/
+/* Inconsistência na quantidade de Litros*/
 
 SELECT * FROM (
   SELECT 

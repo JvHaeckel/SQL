@@ -1,4 +1,4 @@
--- Exibir linhas com Abastecimento Duplicado
+-- Exibir linhas com Abastecimento Duplicado Globus
 /* Ele só fez até dia 29 mas meu BI mostra que teve mais 3 casos*/
 SELECT 
     DATA, 

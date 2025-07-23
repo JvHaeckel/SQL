@@ -1,4 +1,4 @@
--- Quantidade de Abastecimentos sem deslocamento
+-- Quantidade de Abastecimentos sem deslocamento Gt Frota
 SELECT 
     EMPRESA, VEI_IDENTIFICACAO_EMPRESA,
     COUNT(*) AS QtdeAbastecimentos,
