@@ -1,9 +1,9 @@
--- Soma do Abastecimento sem deslocamento Gt Frota
-SELECT 
+-- Soma dos abastecimentos sem deslocamentos
+SELECT  
     ROUND(SUM(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES), 2) AS SOMA_Litros_Abas_SemDesloc
 FROM fact_vwpbi_abast_gtfrota
 WHERE 
     HAS_DATA >= '2025-01-01 00:00:00'
     AND KM_PERCO = 0 
     AND (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) IS NOT NULL
-    AND (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) <> 0
+    AND (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) > 0;
