@@ -1,4 +1,4 @@
--- Seleciona o total de Litros por frota a cada Mês durante o ano de 2025
+-- Soma o total de Litros por frota a cada Mês durante o ano de 2025
 
 SELECT 
   month(DATA) as Mês,
