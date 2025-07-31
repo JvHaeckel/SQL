@@ -1,0 +1,16 @@
+-- Recalcula KM 
+/* não mostrou nenhum Km errado*/
+SELECT  EMPRESA, HAS_DATA, VEI_IDENTIFICACAO_EMPRESA AS Prefixo , 
+(HAS_ODOMETRO - KM_ANT) AS RecalculaKm , 
+KM_PERCO, 
+ 
+CASE 
+
+WHEN (KM_ANT IS NULL OR HAS_ODOMETRO IS NULL) AND KM_PERCO IS NULL THEN ''  /* Casos aonde um dos valores é NULL*/
+/* Não pega assim: WHEN (HAS_ODOMETRO - KM_ANT ) IS NULL  AND KM_PERCO IS NULL THEN '' */
+
+WHEN (HAS_ODOMETRO - KM_ANT) = KM_PERCO THEN '' ELSE 'ERROR'
+END AS VerificaKm,
+KM_ANT, HAS_ODOMETRO
+
+FROM fact_vwpbi_abast_gtfrota WHERE HAS_DATA >= '2025-01-01 00:00:00' 
