@@ -1,0 +1,14 @@
+--  Km Negativo de cada Prefixo Mês
+
+SELECT 
+  VEI_IDENTIFICACAO_EMPRESA AS Prefixo, YEAR(HAS_DATA) AS Ano, 
+  MONTH(HAS_DATA) AS Mes, SUM(KM_PERCO) AS Soma_Km_Negativo
+FROM fact_vwpbi_abast_gtfrota
+WHERE 
+  HAS_DATA >= '2025-01-01 00:00:00'
+  AND KM_PERCO < 0
+GROUP BY 
+  VEI_IDENTIFICACAO_EMPRESA,
+  YEAR(HAS_DATA), 
+  MONTH(HAS_DATA)
+ORDER BY Mes;
