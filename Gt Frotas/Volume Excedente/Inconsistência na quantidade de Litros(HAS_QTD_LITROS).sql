@@ -6,18 +6,17 @@ https://mobibrasil.topdesk.net/tas/public/ssp/content/detail/incident?unid=f86a7
 Inconsistência na quantidade de Litros(HAS_QTD_LITROS), ao fazer a diferença entre os encerrantes para checar 
 os dados percebi que alguns valores não batem. Como podemos ver abaixo existem uma série de desvios:  */
 
-
 SELECT * FROM (
   SELECT 
-   HAS_DATA, EMPRESA, VEI_IDENTIFICACAO_EMPRESA, HAS_QTD_LITROS, 
- (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) AS RECALCULA_QTD,
+   HAS_DATA AS DATA, EMPRESA AS Empresa, VEI_IDENTIFICACAO_EMPRESA AS Prefixo, HAS_QTD_LITROS, 
+ (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) AS Recalcula_QTD,
 
     CASE 
 WHEN (HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) = HAS_QTD_LITROS THEN 'OK' ELSE 'ERRO' 
     END AS CheckList,
 
-VEI_LIMITE_ABASTECIMENTO,(HAS_ODOMETRO - KM_ANT ) AS RECALCULA_KM,HAS_ENCERRANTE_ANTES, 
- HAS_ENCERRANTE_DEPOIS, HAS_ODOMETRO, KM_ANT, KM_PERCO
+VEI_LIMITE_ABASTECIMENTO AS Tanque,HAS_ENCERRANTE_ANTES, 
+ HAS_ENCERRANTE_DEPOIS
 
   FROM fact_vwpbi_abast_gtfrota WHERE HAS_DATA >= '2025-01-01 00:00:00'
 ) AS sub
