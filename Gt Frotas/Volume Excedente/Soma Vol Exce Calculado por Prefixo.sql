@@ -1,4 +1,4 @@
--- Soma Vol Exce Calculado por Prefixo
+-- Soma Vol Exce Calculado por Prefixo 
 SELECT 
   VEI_IDENTIFICACAO_EMPRESA AS Prefixo,
 ROUND(
