@@ -1,0 +1,17 @@
+-- Tabela Volume Excedente com Litros calculados
+SELECT 
+  EMPRESA, HAS_DATA AS DATA, VEI_IDENTIFICACAO_EMPRESA AS Prefixo, 
+  VEI_LIMITE_ABASTECIMENTO AS Tanque, HAS_QTD_LITROS AS Litros,
+  ROUND(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES,2) AS NewLitros ,
+ 
+  -- Volume que excede o limite permitido
+   ROUND((HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES) - (VEI_LIMITE_ABASTECIMENTO),2 ) AS Volume_Excedente
+
+FROM fact_vwpbi_abast_gtfrota
+WHERE 
+  HAS_DATA >= '2025-01-01 00:00:00'
+  AND ROUND(HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES,2)  > VEI_LIMITE_ABASTECIMENTO  -- Só mostra quando há excesso
+
+ORDER BY 
+  HAS_DATA ASC;  
+
