@@ -14,4 +14,3 @@ WHERE
 
 ORDER BY 
   HAS_DATA ASC;  
-
