@@ -1,4 +1,4 @@
--- Soma Volume Excedente Litros HAS_QTD_LITROS 388,35
+-- Soma Volume Excedente Litros HAS_QTD_LITROS (388,35)
 SELECT 
   
 ROUND(  SUM( ROUND(HAS_QTD_LITROS - VEI_LIMITE_ABASTECIMENTO,2)),2 )AS SOMA_Volume_Excedente
