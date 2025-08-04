@@ -1,4 +1,4 @@
--- QTD Prefixos abastecidos em Excesso para o HAS_QTD_LITROS recalculado
+-- QTD Prefixos abastecidos em Excesso para o HAS_QTD_LITROS recalculado (8)
 SELECT 
  count(distinct(VEI_IDENTIFICACAO_EMPRESA)) AS QTD_Excesso
 
