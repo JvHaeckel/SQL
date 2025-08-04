@@ -7,4 +7,6 @@ SELECT PREFIXO AS Prefixo, SUM(LITROS) AS Total_Litros
  GROUP BY PREFIXO  -- Ao colocar GROUP BY já ajusta para somar a cada prefixo
  
  ORDER BY Total_Litros DESC
- 
+ /* Prefixo Mais Abastecido: 0063032
+    Prefixo Menos Abastecido: 0006340
+*/
