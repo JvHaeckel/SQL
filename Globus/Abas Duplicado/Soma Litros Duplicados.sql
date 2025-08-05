@@ -1,14 +1,10 @@
 -- Soma Litros Duplicados
 SELECT 
-    SUM(LITROS) AS TOTAL_LITROS_DUPLICADOS
+   ROUND( SUM(LITROS) ,2)AS TOTAL_LITROS_DUPLICADOS
 FROM (
     SELECT 
-        EMPRESA,
-        DATE(DATA) AS DATA_SEM_HORA,
-        PREFIXO,
-        LITROS
-    FROM fact_vwpbi_abastecimento_detalhado
-    WHERE DATA >= '2025-01-01 00:00:00' AND LITROS >= 0.01
+        EMPRESA, DATE(DATA) AS DATA_SEM_HORA, PREFIXO, LITROS
+    FROM fact_vwpbi_abastecimento_detalhado WHERE DATA >= '2025-01-01 00:00:00' 
     GROUP BY EMPRESA, DATE(DATA), PREFIXO, LITROS
     HAVING COUNT(*) >= 2
 ) AS Duplicados;
