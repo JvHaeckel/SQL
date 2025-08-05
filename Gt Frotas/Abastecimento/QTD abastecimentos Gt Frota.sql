@@ -1,4 +1,4 @@
--- Contar a quantidade de abastecimentos Totais Gt Frota (182597)
+-- Contar a quantidade de abastecimentos Totais Gt Frota (194434)
 SELECT 
     
     COUNT(*) AS Qtd_Abas
