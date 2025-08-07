@@ -1,4 +1,4 @@
--- Soma Litros Duplicados GT Frotas para HAS_QTD_LITROS em 05/08 = 1904.53 L
+-- Soma Litros Duplicados GT Frotas para HAS_QTD_LITROS 
 SELECT 
    ROUND( SUM(Litros) ,2)AS TOTAL_LITROS_DUPLICADOS
 FROM (
@@ -9,3 +9,6 @@ FROM (
     GROUP BY EMPRESA, DATE(HAS_DATA), VEI_IDENTIFICACAO_EMPRESA, HAS_QTD_LITROS
     HAVING COUNT(*) >= 2
 ) AS Duplicados;
+
+/* 05/08 = 1904.53 L
+   07/08 = 1964.63L*/

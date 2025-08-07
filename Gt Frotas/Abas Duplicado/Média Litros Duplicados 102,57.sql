@@ -1,4 +1,4 @@
--- Média Litros Duplicados 102,57
+-- Média Litros Duplicados 
 
 SELECT 
     ROUND(AVG(LITROS),2) AS MEDIA_LITROS_DUPLICADOS
@@ -13,3 +13,6 @@ FROM (
     GROUP BY EMPRESA, DATE(DATA), PREFIXO, LITROS
     HAVING COUNT(*) >= 2
 ) AS Duplicados;
+
+/* 05/08 = 102,57 
+   07/08 = 105,52*/
