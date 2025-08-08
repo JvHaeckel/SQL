@@ -1,6 +1,3 @@
--- Amostra de dados
-SELECT * 
-FROM fact_vwpbi_abastecimento_detalhado;
 
 -- PREFIXO distintos para o ano 2025
 SELECT DISTINCT PREFIXO 

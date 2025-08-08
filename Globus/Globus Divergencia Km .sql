@@ -1,4 +1,4 @@
--- Tabela Globus que detalha os erros referentes a Km numa coluna chamada de DivergenciaKM
+-- Tabela Globus que detalha os erros referentes a Km numa coluna chamada de Divergencia no Km
 
 SELECT 
     EMPRESA, DATA, PREFIXO, KMPERCORRIDO,
