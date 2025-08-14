@@ -8,3 +8,9 @@ FROM  fact_vwpbi_abast_gtfrota   WHERE  HAS_DATA >= '2025-01-01 00:00:00'
                 
 GROUP BY VEI_IDENTIFICACAO_EMPRESA     -- Agrupa os resultados por prefixo 
 ORDER BY    SUM(KM_PERCO) DESC;    -- Ordena do mais Rodado para o menos rodado
+
+/* 
+Mais rodado - Prefixo: 0002939	Soma_KmRecalculado: 26986069
+Menos rodado - Prefixo: 0002975	Soma_KmRecalculado: -938040
+
+*/
