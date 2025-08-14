@@ -1,9 +1,9 @@
--- Colunas mais usadas Gt Frotas para Dashboards de abastecimento
+-- Colunas mais usadas Gt Frotas para Dashboards de abastecimento e Km
 
 SELECT  EMPRESA AS Empresa, HAS_DATA AS Data, VEI_IDENTIFICACAO_EMPRESA AS Prefixo , 
 ROUND((HAS_ENCERRANTE_DEPOIS - HAS_ENCERRANTE_ANTES),1) AS RecalculaLitros, 
 HAS_QTD_LITROS, VEI_LIMITE_ABASTECIMENTO,(HAS_ODOMETRO - KM_ANT) AS RecalculaKm , 
-KM_PERCO, TER_DATA_ULTIMA_COMUNIC
+KM_PERCO, ((HAS_ODOMETRO - KM_ANT) - KM_PERCO ) AS Diferença, TER_DATA_ULTIMA_COMUNIC
  
  FROM fact_vwpbi_abast_gtfrota  WHERE HAS_DATA >= '2025-01-01 00:00:00' 
  ORDER BY HAS_DATA ASC
