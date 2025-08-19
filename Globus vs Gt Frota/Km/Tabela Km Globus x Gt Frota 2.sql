@@ -1,0 +1,12 @@
+-- Tabela Km Globus x Gt Frota 2 feita pelo Gemini
+SELECT
+  T1.HAS_DATA AS Data,
+  T1.EMPRESA,
+  T1.VEI_IDENTIFICACAO_EMPRESA AS Prefixo,
+  T2.KMPERCORRIDO AS Km_Globus,
+  (T1.HAS_ODOMETRO - T1.KM_ANT) AS Km_Gt_Frota,
+  T2.KMPERCORRIDO - (T1.HAS_ODOMETRO - T1.KM_ANT) AS Diferenca_Km
+FROM
+  fact_vwpbi_abast_gtfrota AS T1
+LEFT JOIN
+  Globus AS T2 ON T1.VEI_IDENTIFICACAO_EMPRESA = T2.PREFIXO AND T1.HAS_DATA = T2.DATA;
